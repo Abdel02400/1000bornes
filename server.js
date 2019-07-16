@@ -1,10 +1,14 @@
 const express = require('express');
+const sockets = require('./sockets/sockets');
+const router = require('./routes/routes');
+const bodyParser = require('body-parser');
+const {app, game} = require('./config/config');
 
-var PORT = 8080;
-var app = express();
+app.use('/', router);
+app.use(express.static('static'));
+app.use(bodyParser.json());
 
-var server = app.listen(PORT, ajoutcarte(), () => {
-    console.log('serveur ecouté sur le port : ' + PORT)
-});
+game.on('connection', sockets.gameNamespace);
+
 
 

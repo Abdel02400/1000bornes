@@ -1,0 +1,311 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>1000 bornes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<style media="screen">
+    @media (min-width: 700px) {
+        .bigPlan.no-padding {
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+    }
+</style>
+<style>
+    * {
+        height: 100%;
+    }
+    body {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #B6EEE1;
+    }
+    button {
+        height: 38px;
+    }
+    .row {
+        margin: 0;
+    }
+    .no-padding {
+        padding: 0;
+    }
+    .course {
+        padding-left: 10%;
+        padding-right: 0%;
+        height: 500px;
+        min-width: 500px;
+        min-height: 500px;
+    }
+    .borderRight {
+        border-right: 2px solid black;
+    }
+    .borderLeft {
+        border-left: 2px solid black;
+    }
+    .borderBottom {
+        border-bottom: 2px solid black;
+    }
+    .start {
+        border-top: 2px dashed black;
+        border-bottom: 2px dashed black;
+    }
+    .car {
+        height: 15%;
+        min-height: 100px;
+        min-width: 500px;
+        padding-left: 10%;
+        padding-right: 0%;
+    }
+    .borderCourse {
+        border-right: 2px solid black;
+        border-left: 2px solid black;
+    }
+    .allBorder {
+        border: 2px solid black;
+    }
+    .plan {
+        height: 10%;
+        border-top: 2px solid black;
+    }
+    .finish {
+        border-bottom: 2px solid black;
+    }
+    .planBorderText {
+        width:65px;
+        margin-top:-15px;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: #B6EEE1;
+        height: 30px;
+    }
+    .finishText {
+        width:65px;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: #B6EEE1;
+        height: 30px;
+    }
+    .paddingLeft {
+        padding-left: 10%;
+    }
+    .players {
+        padding: 2%;
+    }
+    .firstBlock {
+        height: 50%;
+    }
+    .playerBlock {
+        height: 22%;
+    }
+    .playerName {
+        height: 12%;
+    }
+    .modal {
+        display: block;
+        position: fixed;
+        z-index: 1;
+        padding-top: 200px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        height: 40%;
+    }
+    #modal-content-1 {
+        display: block;
+        height: 20%;
+    }
+    #modal-content-2 {
+        display: none;
+    }
+    #noPlayer {
+        color: red;
+        display: none;
+    }
+</style>
+<body>
+
+<div class="container-fluid no-padding">
+    <div class="row">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 no-padding bigPlan">
+            <div class="row">
+                <div class="col-12 car">
+                    <div class="row">
+                        <div class="col-9 no-padding borderLeft">
+                            <div class="row">
+                                <div class="col-3 no-padding borderRight"></div>
+                                <div class="col-3 no-padding borderRight"></div>
+                                <div class="col-3 no-padding borderRight"></div>
+                                <div class="col-3 no-padding"></div>
+                            </div>
+                        </div>
+                        <div class="col-3 no-padding">
+                            <div class="row allBorder">
+                                <div class="col-6 no-padding borderRight"></div>
+                                <div class="col-6 no-padding"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 course">
+                    <div class="row">
+                        <div class="col-9 no-padding borderCourse">
+                            <div class="row start">
+                                <div class="col-3 no-padding borderRight"></div>
+                                <div class="col-3 no-padding borderRight"></div>
+                                <div class="col-3 no-padding borderRight"></div>
+                                <div class="col-3 no-padding"></div>
+                            </div>
+                        </div>
+                        <div class="col-3 no-padding">
+                            <div class="row paddingLeft">
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">Start</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">100 km</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">200km</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">300 km</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">400 km</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">500 km</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">600 km</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">700 km</p>
+                                </div>
+                                <div class="col-12 plan">
+                                    <p class="planBorderText">800 km</p>
+                                </div>
+                                <div class="col-12 plan finish">
+                                    <p class="planBorderText">900 km</p>
+                                    <p class="finishText">Finish</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 players">
+            <div class="row">
+                <div class="col-12 firstBlock no-padding">
+                    <div class="row">
+                        <div class="col-6 players">
+                            <div class="row allBorder">
+                                <div class="col-12 no-padding playerName borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 players">
+                            <div class="row allBorder">
+                                <div class="col-12 no-padding playerName borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 firstBlock no-padding">
+                    <div class="row">
+                        <div class="col-6 players">
+                            <div class="row allBorder">
+                                <div class="col-12 no-padding playerName borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 players">
+                            <div class="row allBorder">
+                                <div class="col-12 no-padding playerName borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 no-padding playerBlock"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div id="modal-content-1">
+            <p>Bonjour, la partie n'a pas encore commencer !</p>
+            <div>
+                <label for="namePlayer">Entrez votre nom : </label>
+                <input type="text" id="namePlayer">
+            </div>
+            <div style="margin-top: 15px">
+                <button type="button" class="btn btn-primary" id="btnAddPlayer">Je souhaite rejoindre la partie</button>
+            </div>
+            <span id="noPlayer" style="margin-top: 15px">Veuillez saisir votre nom</span>
+        </div>
+        <div id="modal-content-2">
+            <p>Bonjour, la partie est complete ! Veuillez attendre la prochaine</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script>
+    var socket = io('/game',{transports: ['websocket'], upgrade: false });
+
+    var btnAddPlayer = document.getElementById('btnAddPlayer');
+    var namePlayer = document.getElementById('namePlayer');
+    var noPlayer = document.getElementById('noPlayer');
+
+    socket.on('message', data => {
+        console.log(data)
+    })
+
+    namePlayer.addEventListener('click', () => {
+        noPlayer.style.display = "none";
+    })
+
+    btnAddPlayer.addEventListener('click', (e) =>{
+        e.preventDefault();
+        if(namePlayer.value !== "") {
+            noPlayer.style.display = "none";
+            socket.emit('addPlayer', namePlayer.value);
+            namePlayer.value = "";
+        }else {
+            noPlayer.style.display = "block";
+        }
+    })
+
+</script>
+</body>
+</html>
