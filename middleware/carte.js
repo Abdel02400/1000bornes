@@ -242,7 +242,7 @@ module.exports = { ajoutCarte: function(){
 
         console.log('Cartes Supprimées');
       }); */
-      console.log(cartes);
+      console.log("tout les cartes sont présentes actuellement");
     }
   }
   )}

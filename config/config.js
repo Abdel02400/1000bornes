@@ -1,11 +1,12 @@
 const express = require('express');
 const socketio = require('socket.io');
+var carte = require('../middleware/carte.js');
 
 var PORT = 8080;
 
 var app = express();
 
-var server = () =>  app.listen(PORT, () => {
+var server = () =>  app.listen(PORT, carte.ajoutCarte(), () => {
     console.log('serveur ecouté sur le port : ' + PORT)
 });
 
