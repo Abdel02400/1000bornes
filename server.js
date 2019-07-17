@@ -36,22 +36,22 @@ function generateDeck() {
     try{
 
       for(var i = 0; i < Cards.length; i++) {
-        if(Cards[i].type == "Botte") {
+        if(Cards[i].type === "Botte") {
           deck.push(Cards[i]);
         } // FIN BOTTE
-        if(Cards[i].type == "Attaque") {
-          if(Cards[i].nom == "panne" || Cards[i].nom == "accident" || Cards[i].nom == "crevaison") {
+        if(Cards[i].type === "Attaque") {
+          if(Cards[i].nom === "panne" || Cards[i].nom === "accident" || Cards[i].nom === "crevaison") {
             for(var a = 0; a < 3; a++) {
               deck.push(Cards[i]);
             }
           }
           else {
-            if(Cards[i].nom == "limit") {
+            if(Cards[i].nom === "limit") {
               for(var a = 0; a < 4; a++) {
                 deck.push(Cards[i]);
               }
             }
-            if(Cards[i].nom == "feu_rouge"){
+            if(Cards[i].nom === "feu_rouge"){
               for(var a = 0; a < 5; a++) {
                 deck.push(Cards[i]);
               }
@@ -61,8 +61,8 @@ function generateDeck() {
         } // FIN ATTAQUE
 
 
-        if(Cards[i].type == "Parade") {
-          if(Cards[i].nom != "feu_vert") {
+        if(Cards[i].type === "Parade") {
+          if(Cards[i].nom !== "feu_vert") {
             for(var p = 0; p < 6; p++) {
               deck.push(Cards[i]);
             }
@@ -75,19 +75,19 @@ function generateDeck() {
         } // FIN PARADE
 
 
-        if(Cards[i].type == "Distance") {
-          if(Cards[i].nom == "25km" || Cards[i].nom == "50km" || Cards[i].nom == "75km") {
+        if(Cards[i].type === "Distance") {
+          if(Cards[i].nom === "25km" || Cards[i].nom === "50km" || Cards[i].nom === "75km") {
             for(var a = 0; a < 10; a++) {
               deck.push(Cards[i]);
             }
           }
           else {
-            if(Cards[i].nom == "100km") {
+            if(Cards[i].nom === "100km") {
               for(var a = 0; a < 12; a++) {
                 deck.push(Cards[i]);
               }
             }
-            if(Cards[i].nom == "200km") {
+            if(Cards[i].nom === "200km") {
               for(var a = 0; a < 4; a++) {
                 deck.push(Cards[i]);
               }
@@ -103,22 +103,22 @@ function generateDeck() {
     let countParade = 0;
     let countAttaque = 0;
       for(i = 0; i < deck.length; i++) {
-        if(deck[i].type == "Distance") {
+        if(deck[i].type === "Distance") {
 
           countDistance++;
         }
 
-        if(deck[i].type == "Botte") {
+        if(deck[i].type === "Botte") {
 
           countBotte++;
         }
 
-        if(deck[i].type == "Parade") {
+        if(deck[i].type === "Parade") {
 
           countParade++;
         }
 
-        if(deck[i].type == "Attaque") {
+        if(deck[i].type === "Attaque") {
 
           countAttaque++;
         }

@@ -94,7 +94,11 @@
         padding: 2%;
     }
     .firstBlock {
-        height: 50%;
+        height: 45%;
+    }
+    .eventGame {
+        height: 10%;
+        border: 2px solid black;
     }
     .playerBlock {
         height: 22%;
@@ -255,6 +259,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 eventGame no-padding"></div>
             </div>
         </div>
     </div>
@@ -286,14 +291,47 @@
     var btnAddPlayer = document.getElementById('btnAddPlayer');
     var namePlayer = document.getElementById('namePlayer');
     var noPlayer = document.getElementById('noPlayer');
+    var modal = document.getElementById('myModal');
+    var modalContent1 = document.getElementById('modal-content-1');
+    var modalContent2 = document.getElementById('modal-content-2');
+
+    var user = {};
+    var gameComplete = false;
 
     socket.on('message', data => {
         console.log(data)
-    })
+    });
+
+    socket.on('complete', data => {
+        gameComplete = data;
+        if(gameComplete && Object.keys(user).length === 0) {
+            modalContent1.style.display = "none";
+            modalContent2.style.display = "block";
+        } else if (!gameComplete && Object.keys(user).length === 0) {
+            modalContent1.style.display = "block";
+            modalContent2.style.display = "none";
+        }
+    });
+
+    socket.on('listPlayer', data => {
+        if(Object.keys(user).length > 0) {
+            console.log(data);
+            for (var player in data) {
+                if (player === user.socketid) user = data[player];
+            }
+
+            addPlayers(data);
+        }
+    });
+
+    socket.on('myProfil', data => {
+        user = data;
+        modal.style.display = 'none';
+    });
 
     namePlayer.addEventListener('click', () => {
         noPlayer.style.display = "none";
-    })
+    });
 
     btnAddPlayer.addEventListener('click', (e) =>{
         e.preventDefault();
@@ -304,7 +342,14 @@
         }else {
             noPlayer.style.display = "block";
         }
-    })
+    });
+
+    var addPlayers = (data) => {
+        var nbplayers = 1;
+        for (var player in data){
+
+        }
+    }
 
 </script>
 </body>
