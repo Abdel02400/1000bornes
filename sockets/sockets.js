@@ -50,7 +50,6 @@ var gameNamespace = (socket) => {
         var id = res[1];
 
         var playersIds = await getPlayersId();
-
         redisClient.sadd('joueurs', id);
         redisClient.hmset(id, "name", data, "socketid", id, "score", 0, "player", playersIds.length + 1);
 
@@ -75,11 +74,23 @@ var gameNamespace = (socket) => {
         if(playersIds.length === 4) {
             socket.broadcast.emit('complete', true);
         }
-
+        // Récupération du deck
         var deck = await generateDeck();
 
         socket.emit('listPlayer', {players,deck});
         socket.broadcast.emit('listPlayer', {players,deck});
+        console.log("Players : " + players.length)
+        var result;
+        // Distribution des cartes premier tour
+        for (i = 0; i < playersIds.length; i++) {
+            result = distributeCards(6, playersIds[i], deck);
+        } 
+
+        // Update du deck
+        deck = result.deck;
+        console.log("MAIN EN SORTIE : " + result.main.socketid);
+        console.log("DECK EN SORTIE : " + result.deck.length);
+
 
 
     });
@@ -110,34 +121,9 @@ var gameNamespace = (socket) => {
             }
         }
 
-        /*redisClient.smembers('joueurs', (err, result) => {
-            result.forEach(function(playerId) {
-                if(playerId === id) {
-
-                    redisClient.hgetall(playerId, (err, result) => {
-                        nbplayer = result.player;
-                    });
-
-                    redisClient.del(playerId);
-                    redisClient.srem('joueurs', playerId);
-                }
-            });
-
-            redisClient.smembers("joueurs", (err, result) => {
-                result.forEach(function(playerId) {
-                    redisClient.hgetall(playerId, (err, result) => {
-                        if(result.player > nbplayer){
-                            var newResult = parseInt(result.player) -1;
-                            redisClient.hset(playerId, 'player', newResult);
-                        }
-                    });
-                })
-            });
-        });*/
-
         var res2 = {};
         playersIds = await getPlayersId();
-
+        console.log(playersIds);
         for(var i=0; i< playersIds.length; i++) {
             user = await getUser(playersIds[i]);
             res2[user.socketid] = {
@@ -149,6 +135,28 @@ var gameNamespace = (socket) => {
         }
         socket.broadcast.emit('listPlayer', res2);
     });
+}
+
+function distributeCards(numberCards, playerID, deck) {
+        var cardsElt = [];
+        console.log("ETAT DU DECK : " + deck);
+        for(var i = 0; i < numberCards; i++)
+        {
+            cardsElt.push(deck[deck.length]);
+            deck.pop();
+            console.log("Nouvelle carte : --> " + deck[deck.length - 1].nom);
+        }
+        var main;
+       main = {
+            cards: cardsElt,
+            number: cardsElt.length,
+            socketid: playerID,
+        }
+        console.log("MAIN DU JOUEUR -> " + main.cards.length);
+        console.log("JOUEUR LIE : " + main.socketid);
+        var result = {main : main
+                     ,deck : deck};
+        return(result);
 }
 
 var generateDeck = () => {
