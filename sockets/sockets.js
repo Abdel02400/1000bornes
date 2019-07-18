@@ -84,7 +84,7 @@ var gameNamespace = (socket) => {
         // Distribution des cartes premier tour
         for (i = 0; i < playersIds.length; i++) {
             result = distributeCards(6, playersIds[i], deck);
-        } 
+        }
 
         // Update du deck
         deck = result.deck;
@@ -135,6 +135,11 @@ var gameNamespace = (socket) => {
         }
         socket.broadcast.emit('listPlayer', res2);
     });
+}
+
+function checkVictory(player) {
+  if (player.score == 1000)
+    socket.broadcast.emit('win', player);
 }
 
 function distributeCards(numberCards, playerID, deck) {
