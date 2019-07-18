@@ -399,37 +399,6 @@ var generateDeck = () => {
 
 
                 }
-                let countDistance = 0;
-                let countBotte = 0;
-                let countParade = 0;
-                let countAttaque = 0;
-                for(i = 0; i < deck.length; i++) {
-                    if(deck[i].type === "Distance") {
-
-                        countDistance++;
-                    }
-
-                    if(deck[i].type === "Botte") {
-
-                        countBotte++;
-                    }
-
-                    if(deck[i].type === "Parade") {
-
-                        countParade++;
-                    }
-
-                    if(deck[i].type === "Attaque") {
-
-                        countAttaque++;
-                    }
-
-                };
-                console.log("NOMBRE DISTANCE : " + countDistance);
-                console.log("NOMBRE BOTTE : " + countBotte);
-                console.log("NOMBRE PARADE : " + countParade);
-                console.log("NOMBRE ATTAQUE : " + countAttaque);
-                console.log("TAILLE DU DECK : " + deck.length);
                 var ctr = deck.length, temp, index;
 
                 // Mélange du tableau
