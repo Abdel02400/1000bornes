@@ -393,6 +393,10 @@
         }
     });
 
+    socket.on("win", player => {
+      // win message, feu d'artifice, pin up qui strip ...
+    })
+
     socket.on('myProfil', data => {
         user = data;
         modal.style.display = 'none';
@@ -435,7 +439,7 @@
             console.log(data)
             cardDeck.style.display = "block";
             backgroundDeck.style.display = "block";
-            nbCarteDeck.innerHTML = data.length;
+            nbCarteDeck.innerHTML = data.deck.length;
         }
     });
 
