@@ -272,20 +272,19 @@
                         <div class="col-6 players">
                             <div class="row allBorder" id="player-1">
                                 <div class="col-12 no-padding playerName borderBottom"></div>
-                                <div class="col-12 row no-padding playerBlock borderBottom" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                </div>
-                                <div class="col-12 row no-padding playerBlock borderBottom" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 row no-padding playerBlock"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" id="player-1-main" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" id="player-1-bottes" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" id="player-1-alteration" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 row no-padding playerBlock" id="player-1-distance" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                         </div>
                         <div class="col-6 players">
                             <div class="row allBorder" id="player-2">
                                 <div class="col-12 no-padding playerName borderBottom"></div>
-                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 row no-padding playerBlock"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" id="player-2-main" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" id="player-2-bottes" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" id="player-2-alteration" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 row no-padding playerBlock" id="player-2-distance" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                         </div>
                     </div>
@@ -295,19 +294,19 @@
                         <div class="col-6 players">
                             <div class="row allBorder" id="player-3">
                                 <div class="col-12 no-padding playerName borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom" id="player-3-main" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom" id="player-3-bottes" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom" id="player-3-alteration" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 no-padding playerBlock" id="player-3-distance" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                         </div>
                         <div class="col-6 players">
                             <div class="row allBorder" id="player-4">
                                 <div class="col-12 no-padding playerName borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom" id="player-4-main" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom" id="player-4-bottes" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 no-padding playerBlock borderBottom" id="player-4-alteration" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 no-padding playerBlock" id="player-4-distance" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                         </div>
                     </div>
@@ -383,6 +382,8 @@
     var backgroundDeck = document.getElementById('backgroundDeck');
 
     var tour;
+
+    var info = {};
 
     socket.on('tour', data => {
         if(Object.keys(user).length > 0) {
@@ -491,7 +492,7 @@
             cardDeck.style.display = "block";
             backgroundDeck.style.display = "block";
             nbCarteDeck.innerHTML = data.deck.length;
-
+            info = data;
             createBlock(data);
         }
     });
@@ -567,12 +568,30 @@
 
     var drag = (e) => {
         e.dataTransfer.setData("text", e.target.id);
+        e.dataTransfer.setData("src", e.target.src);
     }
 
     var drop = (e) => {
         e.preventDefault();
-        var data = e.dataTransfer.getData("text");
-        e.target.appendChild(document.getElementById(data));
+        var data = e.dataTransfer.getData("id");
+        var cardSrc = e.dataTransfer.getData("src");
+        var realSrc = cardSrc.split('http://localhost:8080');
+        var divSelected  = document.querySelector('img[class="' + user.player + '-' + realSrc[1] + '"]');
+        e.target.appendChild(divSelected);
+        var res = e.target.id.split('-');
+        var idDestinataire = res[1];
+        var destinationType = res[2];
+
+        var allData = {
+            expediteur: user.player,
+            destinataire: idDestinataire,
+            destinationType: destinationType,
+            cardElement: realSrc[1],
+            data: info
+        };
+
+
+        socket.emit('updateGame', allData);
     }
 
     var createBlock = (data) => {
@@ -594,7 +613,7 @@
                     if(tour === data.main[player].player) imageBack.setAttribute('draggable', "true");
                     else imageBack.setAttribute('draggable', "false");
                     imageBack.setAttribute('ondragstart', "drag(event)");
-                    imageBack.setAttribute('class', "");
+                    imageBack.setAttribute('class', data.main[player].player + '-' + chemin);
                     playerBlock.childNodes[3].appendChild(imageBack);
                 }
             }

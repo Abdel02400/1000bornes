@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="955e0dac-2e5a-4c3b-b008-0f0166b54813" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sockets/sockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/sockets/sockets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/game.html" afterDir="false" />
     </list>
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/game.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="490" selection-start-line="490" selection-end-line="490" />
+            <state relative-caret-position="323">
+              <caret line="591" column="8" selection-start-line="591" selection-start-column="8" selection-end-line="591" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#html#0;n#!!top" />
                 <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -43,9 +42,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1921">
-              <caret line="113" selection-start-line="113" selection-end-line="113" />
+            <state relative-caret-position="221">
+              <caret line="178" selection-start-line="178" selection-end-line="178" />
               <folding>
+                <element signature="e#528#745#0" />
+                <element signature="e#773#982#0" />
+                <element signature="e#1008#1221#0" />
+                <element signature="e#1249#1636#0" />
+                <element signature="e#1691#1960#0" />
+                <element signature="e#2013#2258#0" />
+                <element signature="e#2305#3033#0" />
+                <element signature="e#3081#4265#0" />
+                <element signature="e#4312#5246#0" />
+                <element signature="e#5295#6636#0" />
+                <element signature="n#!!block;n#playDistance#0" />
+                <element signature="n#!!block;n#playParade#0" />
+                <element signature="n#!!block;n#playBotte#0" />
+                <element signature="n#!!block;n#playAttaque#0" />
                 <element signature="n#!!block;n#checkVictory#0" />
               </folding>
             </state>
@@ -91,12 +104,12 @@
       <find>console.</find>
       <find>eventGame</find>
       <find>modal</find>
-      <find>console</find>
       <find>inn</find>
       <find>minT</find>
       <find>justOne</find>
       <find>emit</find>
       <find>my</find>
+      <find>console</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,8 +124,8 @@
         <option value="$PROJECT_DIR$/models/carte.js" />
         <option value="$PROJECT_DIR$/middleware/carte.js" />
         <option value="$PROJECT_DIR$/config/config.js" />
-        <option value="$PROJECT_DIR$/sockets/sockets.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/sockets/sockets.js" />
         <option value="$PROJECT_DIR$/static/game.html" />
       </list>
     </option>
@@ -129,7 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -141,6 +153,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -222,17 +235,20 @@
       <workItem from="1563491982569" duration="1033000" />
       <workItem from="1563524846156" duration="1783000" />
       <workItem from="1563526673661" duration="1273000" />
+      <workItem from="1563528483081" duration="1794000" />
+      <workItem from="1563530302026" duration="1790000" />
+      <workItem from="1563532129646" duration="231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73735000" />
+    <option name="totallyTimeSpent" value="77550000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21648793" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22453083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -303,36 +319,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="490" selection-start-line="490" selection-end-line="490" />
-          <folding>
-            <element signature="n#style#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1921">
-          <caret line="113" selection-start-line="113" selection-end-line="113" />
-          <folding>
-            <element signature="n#!!block;n#checkVictory#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -351,6 +337,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
+          <folding>
+            <element signature="e#528#745#0" />
+            <element signature="e#773#982#0" />
+            <element signature="e#1008#1221#0" />
+            <element signature="e#1249#1636#0" />
+            <element signature="e#1691#1960#0" />
+            <element signature="e#2013#2258#0" />
+            <element signature="e#2305#3033#0" />
+            <element signature="e#3081#4265#0" />
+            <element signature="e#4312#5246#0" />
+            <element signature="e#5295#6636#0" />
+            <element signature="n#!!block;n#playDistance#0" />
+            <element signature="n#!!block;n#playParade#0" />
+            <element signature="n#!!block;n#playBotte#0" />
+            <element signature="n#!!block;n#playAttaque#0" />
+            <element signature="n#!!block;n#checkVictory#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="591" column="8" selection-start-line="591" selection-start-column="8" selection-end-line="591" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

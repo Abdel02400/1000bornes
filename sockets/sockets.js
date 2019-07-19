@@ -175,6 +175,10 @@ var gameNamespace = (socket) => {
 
     });
 
+    socket.on('updateGame', data => {
+
+    })
+
     socket.on('disconnect',  async (data) => {
         var res = socket.id.split('#');
         var id = res[1];
@@ -340,7 +344,7 @@ var distributeCards = (numberCards, playerID, deck) => {
         for(var i = 0; i < numberCards; i++)
         {
             cardsElt.push(deck[deck.length - 1]);
-            trash.push(deck[deck.length - 1 ]);
+            //trash.push(deck[deck.length - 1 ]);
             deck.pop();
         }
         var main;
@@ -351,8 +355,8 @@ var distributeCards = (numberCards, playerID, deck) => {
             socketid: playerID,
         }
         var result = {main : main
-            ,deck : deck,
-            trash: trash};
+            ,deck : deck
+            /*trash: trash*/};
 
         resolve(result);
     })
