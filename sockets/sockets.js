@@ -75,15 +75,26 @@ var gameNamespace = (socket) => {
         }
     });
 
-    /*socket.on('eventCard', async (data) => {
+    socket.on('eventCard', async (data) => {
         var data = {
-            expediteur: socket.id;
-            destinataire: socket.id || corbeille;
-            cardElement: {
-                ...
-            }
+            expediteur: socket.id,
+            destinataire: socket.id,
+            cardElement: card,
+        };
+        var isMovePlayable = false;
+        switch (data.cardElement.type) {
+          case "Distance":
+            isMovePlayable = playDistance(data.cardElement, data.expediteur);
+          case "Botte":
+            isMovePlayable = playBotte(card.cardElement, data.expediteur);
+          case "Attaque":
+            isMovePlayable = playAttaque(card.cardElement, data.expediteur, data.destinataire);
+          case "Parade":
+            isMovePlayable = playParade(card.cardElement, data.expediteur);
         }
-    })*/
+        socket.emit('playJoueur', isMovePlayable); // RETOUR AU FRONT
+      }
+    );
 
     socket.on('start', async (data) => {
         redisClient.hmset('game', "start", data);
@@ -91,6 +102,7 @@ var gameNamespace = (socket) => {
         socket.broadcast.emit('start', true);
 
         var deck = await generateDeck();
+        var trash = [];
         var playersIds = await getPlayersId();
 
         var result;
@@ -117,6 +129,10 @@ var gameNamespace = (socket) => {
 
         socket.emit('deck', allinfo);
         socket.broadcast.emit('deck', allinfo);
+        deck = result.deck;
+        trash = result.trash;
+        socket.emit('deck', result);
+        socket.broadcast.emit('deck', result);
 
     })
 
@@ -205,10 +221,118 @@ var gameNamespace = (socket) => {
     });
 }
 
-function checkVictory(player) {
-  if (player.score == 1000)
-    socket.broadcast.emit('win', player);
-}
+
+function playDistance(card, expediteur) {
+    var isMovePlayable = false;
+    switch (card.nom) {
+      case "25km": {
+        if (expediteur.score + 25 <= 1000 && expediteur.alteration == "") {
+            expediteur.score += 25;
+          isMovePlayable = true;
+        }
+      }
+      case "50km": {
+        if (expediteur.score + 50 <= 1000 && expediteur.alteration == "") {
+            expediteur.score += 50;
+          isMovePlayable = true;
+        }
+      }
+      case "75km": {
+        if (expediteur.score + 75 <= 1000 && (expediteur.alteration == "" || expediteur.alteration != "limit")) {
+            expediteur.score += 75;
+          isMovePlayable = true;
+        }
+      }
+      case "100km": {
+        if (expediteur.score + 100 <= 1000 && (expediteur.alteration == "" || expediteur.alteration != "limit")) {
+            expediteur.score += 100;
+          isMovePlayable = true;
+        }
+      }
+      case "200km": {
+        if (expediteur.score + 200 <= 1000 && (expediteur.alteration == "" || expediteur.alteration != "limit")) {
+            expediteur.score += 200;
+          isMovePlayable = true;
+        }
+      }
+    }
+    return (isMovePlayable);
+  }
+
+  function playParade(card, expediteur) {
+    var isMovePlayable = false;
+    switch (card.nom) {
+      case "essence": {
+        if (expediteur.alteration == "panne")
+          isMovePlayable = true;
+      }
+      case "fin_limit": {
+        if (expediteur.alteration == "limit")
+          isMovePlayable = true;
+      }
+      case "feu_vert": {
+        if (expediteur.alteration == "feu_rouge")
+          isMovePlayable = true;
+      }
+      case "reparations": {
+        if (expediteur.alteration == "accident")
+          isMovePlayable = true;
+      }
+      case "roue": {
+        if (expediteur.alteration == "crevaison")
+          isMovePlayable = true;
+      }
+    }
+    return (isMovePlayable);
+  }
+
+  function playBotte(card, expediteur) {
+    expediteur.bottes.push(card.nom);
+    return true;
+  }
+
+  function playAttaque(card, expediteur, destinataire) {
+    var isMovePlayable = false;
+    switch (carte.nom) {
+      case "panne": {
+        if (!destinataire.bottes.includes("citerne") && destinataire.alteration == "") {
+            destinataire.alteration = carte.nom;
+          isMovePlayable = true;
+        }
+      }
+      case "limit": {
+        if (!destinataire.bottes.includes("prioritaire") && destinataire.alteration == "") {
+            destinataire.alteration = carte.nom;
+          isMovePlayable = true;
+        }
+      }
+      case "feu_rouge": {
+        if (!destinataire.bottes.includes("prioritaire") && destinataire.alteration == "") {
+            destinataire.alteration = carte.nom;
+          isMovePlayable = true;
+        }
+      }
+      case "accident": {
+        if (!destinataire.bottes.includes("as_volant") && destinataire.alteration == "") {
+            destinataire.alteration = carte.nom;
+          isMovePlayable = true;
+        }
+      }
+      case "crevaison": {
+        if (!destinataire.bottes.includes("increvable") && destinataire.alteration == "") {
+            destinataire.alteration = carte.nom;
+          isMovePlayable = true;
+        }
+      }
+    }
+    return (isMovePlayable);
+  }
+
+
+  function checkVictory(player) {
+    if (player.score === 1000)
+      socket.broadcast.emit('win', player);
+  }
 
 var distributeCards = (numberCards, playerID, deck) => {
     return new Promise( (resolve, reject) =>{
@@ -216,6 +340,7 @@ var distributeCards = (numberCards, playerID, deck) => {
         for(var i = 0; i < numberCards; i++)
         {
             cardsElt.push(deck[deck.length - 1]);
+            trash.push(deck[deck.length - 1 ]);
             deck.pop();
         }
         var main;
@@ -226,7 +351,8 @@ var distributeCards = (numberCards, playerID, deck) => {
             socketid: playerID,
         }
         var result = {main : main
-            ,deck : deck};
+            ,deck : deck,
+            trash: trash};
 
         resolve(result);
     })
@@ -302,37 +428,6 @@ var generateDeck = () => {
 
 
                 }
-                let countDistance = 0;
-                let countBotte = 0;
-                let countParade = 0;
-                let countAttaque = 0;
-                for(i = 0; i < deck.length; i++) {
-                    if(deck[i].type === "Distance") {
-
-                        countDistance++;
-                    }
-
-                    if(deck[i].type === "Botte") {
-
-                        countBotte++;
-                    }
-
-                    if(deck[i].type === "Parade") {
-
-                        countParade++;
-                    }
-
-                    if(deck[i].type === "Attaque") {
-
-                        countAttaque++;
-                    }
-
-                };
-                console.log("NOMBRE DISTANCE : " + countDistance);
-                console.log("NOMBRE BOTTE : " + countBotte);
-                console.log("NOMBRE PARADE : " + countParade);
-                console.log("NOMBRE ATTAQUE : " + countAttaque);
-                console.log("TAILLE DU DECK : " + deck.length);
                 var ctr = deck.length, temp, index;
 
                 // Mélange du tableau

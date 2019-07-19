@@ -116,7 +116,7 @@ module.exports = { ajoutCarte: function(){
       });
 
       let reparations = Carte({
-        nom: 'crevaison',
+        nom: 'reparations',
         type: 'Parade',
         url: './images/cartes/crevaison.png'
       });
