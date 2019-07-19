@@ -149,10 +149,31 @@
     #cardDeck {
         font-size: 0.8rem;
     }
-    #test {
+    #carPlayer-1, #carPlayer-2, #carPlayer-3, #carPlayer-4 {
         width: 50px;
-        height: 60px;
+        height: 70px;
+        margin: auto;
+        display: none;
+    }
+    #carPlayer-1 {
         background-color: red;
+    }
+    #carPlayer-2 {
+        background-color: green;
+    }
+    #carPlayer-3 {
+        background-color: blue;
+    }
+    #carPlayer-4 {
+        background-color: yellow;
+    }
+    #test {
+        width: 35px;
+        height: 50px;
+        margin-right: 1px;
+    }
+    #minTwo, #just1 {
+        display: none;
     }
 </style>
 <body>
@@ -165,10 +186,22 @@
                     <div class="row">
                         <div class="col-9 no-padding borderLeft">
                             <div class="row">
-                                <div class="col-3 no-padding borderRight"></div>
-                                <div class="col-3 no-padding borderRight"></div>
-                                <div class="col-3 no-padding borderRight"></div>
-                                <div class="col-3 no-padding"></div>
+                                <div class="col-3 no-padding borderRight">
+                                    <div  id="carPlayer-1">
+                                    </div>
+                                </div>
+                                <div class="col-3 no-padding borderRight">
+                                    <div  id="carPlayer-2">
+                                    </div>
+                                </div>
+                                <div class="col-3 no-padding borderRight">
+                                    <div  id="carPlayer-3">
+                                    </div>
+                                </div>
+                                <div class="col-3 no-padding">
+                                    <div  id="carPlayer-4">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-3 no-padding">
@@ -178,7 +211,7 @@
                                         <img src="http://christian.deryck.free.fr/Histoire/MilleBornes/ed-1954-d1-277x390.png" alt="" id="backgroundDeck">
                                     </p>
                                 </div>
-                                <div class="col-6 no-padding"></div>
+                                <div class="col-6 no-padding" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                             </div>
                         </div>
                     </div>
@@ -239,21 +272,20 @@
                         <div class="col-6 players">
                             <div class="row allBorder" id="player-1">
                                 <div class="col-12 no-padding playerName borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                    <div id="test" draggable="true" ondragstart="drag(event)" id="drag1"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" ondrop="drop(event)" ondragover="allowDrop(event)">
                                 </div>
-                                <div class="col-12 no-padding playerBlock borderBottom" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 row no-padding playerBlock"></div>
                             </div>
                         </div>
                         <div class="col-6 players">
                             <div class="row allBorder" id="player-2">
                                 <div class="col-12 no-padding playerName borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock borderBottom"></div>
-                                <div class="col-12 no-padding playerBlock"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 row no-padding playerBlock borderBottom"></div>
+                                <div class="col-12 row no-padding playerBlock"></div>
                             </div>
                         </div>
                     </div>
@@ -350,6 +382,20 @@
     var cardDeck = document.getElementById('cardDeck');
     var backgroundDeck = document.getElementById('backgroundDeck');
 
+    var tour;
+
+    socket.on('tour', data => {
+        if(Object.keys(user).length > 0) {
+            tour = data.tour.player;
+            var playerBlock = document.getElementById('player-' + tour)
+            playerBlock.style.border = "3px solid yellow";
+            for(var i=1; i < data.nbJoueurs + 1; i++) {
+                playerBlock = document.getElementById('player-' + i)
+                if(i !== parseInt(tour)) playerBlock.style.border = "2px solid black";
+            }
+        }
+    })
+
     socket.on('message', data => {
         console.log(data)
     });
@@ -379,8 +425,8 @@
             if(user.player === '1') {
                 adminEvent.style.display = "block";
                 if(Object.keys(data.players).length > 1) {
-                    justOne.style.display = "none";
                     minTwo.style.display = "block";
+                    justOne.style.display = "none";
                 }else {
                     justOne.style.display = "block";
                     minTwo.style.display = "none";
@@ -400,6 +446,7 @@
     socket.on('myProfil', data => {
         user = data;
         modal.style.display = 'none';
+
     });
 
     socket.on('start', data => {
@@ -421,8 +468,13 @@
             noAdmin.style.display = "none";
             if(user.player === '1') {
                 adminEvent.style.display = "block";
-                justOne.style.display = "block";
-                minTwo.style.display = "none";
+                if(Object.keys(data.players).length > 1) {
+                    minTwo.style.display = "block";
+                    justOne.style.display = "none";
+                }else {
+                    justOne.style.display = "block";
+                    minTwo.style.display = "none";
+                }
             }
             else {
                 adminEvent.style.display = "none";
@@ -436,10 +488,11 @@
 
     socket.on('deck', data => {
         if(Object.keys(user).length > 0 && gameStarted) {
-            console.log(data)
             cardDeck.style.display = "block";
             backgroundDeck.style.display = "block";
             nbCarteDeck.innerHTML = data.deck.length;
+
+            createBlock(data);
         }
     });
 
@@ -455,8 +508,6 @@
             resetBlock();
         }
     });
-
-
 
     namePlayer.addEventListener('click', () => {
         noPlayer.style.display = "none";
@@ -482,12 +533,18 @@
         resetBlock();
         for (var player in data.players){
             var p = document.createElement('p');
+            var p2 = document.createElement('p');
             var name = document.createTextNode(data.players[player].name);
+            var name2 = document.createTextNode(data.players[player].name);
             var nbPlayer = data.players[player].player
             p.appendChild(name);
+            p2.appendChild(name2);
 
             var playerBlock = document.getElementById('player-' + nbPlayer);
+            var carPlayer = document.getElementById('carPlayer-' + nbPlayer);
             playerBlock.childNodes[1].appendChild(p);
+            carPlayer.appendChild(p2);
+            carPlayer.style.display = "block";
 
         }
     }
@@ -495,7 +552,12 @@
     var resetBlock = () => {
         for(var i = 1; i<5 ; i++){
             var playerBlock = document.getElementById('player-' + i);
+            var carPlayer = document.getElementById('carPlayer-' + i);
             playerBlock.childNodes[1].innerHTML = '';
+            playerBlock.childNodes[3].innerHTML = '';
+            playerBlock.style.border = "2px solid black";
+            carPlayer.innerHTML = '';
+            carPlayer.style.display = "none";
         }
     }
 
@@ -511,6 +573,32 @@
         e.preventDefault();
         var data = e.dataTransfer.getData("text");
         e.target.appendChild(document.getElementById(data));
+    }
+
+    var createBlock = (data) => {
+        for (var player in data.main){
+            for(var card in data.main[player].cards){
+                var playerBlock = document.getElementById('player-' + data.main[player].player);
+                var imageBack = document.createElement('img');
+                if(player !== user.socketid) {
+                    imageBack.setAttribute('id', "test");
+                    imageBack.setAttribute('src', "http://christian.deryck.free.fr/Histoire/MilleBornes/ed-1954-d1-277x390.png");
+                    imageBack.setAttribute('draggable', "false");
+                    imageBack.setAttribute('class', "");
+                    playerBlock.childNodes[3].appendChild(imageBack);
+                }else {
+                    var res = data.main[player].cards[card].url.split('./images');
+                    var chemin = res[1];
+                    imageBack.setAttribute('id', "test");
+                    imageBack.setAttribute('src', chemin);
+                    if(tour === data.main[player].player) imageBack.setAttribute('draggable', "true");
+                    else imageBack.setAttribute('draggable', "false");
+                    imageBack.setAttribute('ondragstart', "drag(event)");
+                    imageBack.setAttribute('class', "");
+                    playerBlock.childNodes[3].appendChild(imageBack);
+                }
+            }
+        }
     }
 
 </script>

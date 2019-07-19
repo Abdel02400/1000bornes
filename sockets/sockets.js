@@ -32,6 +32,15 @@ var gameNamespace = (socket) => {
         })
     }
 
+    var getTour = () => {
+        return new Promise((resolve, reject) => {
+            redisClient.hgetall("tour", (err, result) => {
+                if(err) reject(err);
+                resolve(result);
+            });
+        })
+    }
+
     var resetGame = () => {
         return new Promise((resolve, reject) => {
             redisClient.hgetall('game', (err, result) => {
@@ -85,13 +94,29 @@ var gameNamespace = (socket) => {
         var playersIds = await getPlayersId();
 
         var result;
+        var main = {};
         // Distribution des cartes premier tour
         for (var i = 0; i < playersIds.length; i++) {
             result = await distributeCards(6, playersIds[i], deck);
+            var user = await getUser(playersIds[i]);
+            main[playersIds[i]] = result.main;
+            main[playersIds[i]].player = user.player;
         }
 
-        socket.emit('deck', result);
-        socket.broadcast.emit('deck', result);
+        var allinfo = {
+            deck: result.deck,
+            main: main
+        }
+
+        redisClient.hmset("tour", "player", 1);
+        var tour = await getTour();
+        var nbJoueurs = playersIds.length;
+
+        socket.emit('tour', {tour, nbJoueurs});
+        socket.broadcast.emit('tour', {tour, nbJoueurs});
+
+        socket.emit('deck', allinfo);
+        socket.broadcast.emit('deck', allinfo);
 
     })
 
@@ -186,7 +211,7 @@ function checkVictory(player) {
 }
 
 var distributeCards = (numberCards, playerID, deck) => {
-    return new Promise((resolve, reject) =>{
+    return new Promise( (resolve, reject) =>{
         var cardsElt = [];
         for(var i = 0; i < numberCards; i++)
         {
@@ -194,6 +219,7 @@ var distributeCards = (numberCards, playerID, deck) => {
             deck.pop();
         }
         var main;
+
         main = {
             cards: cardsElt,
             number: cardsElt.length,
@@ -338,6 +364,5 @@ var findCardsType = new Promise(function(resolve, reject){
 
     resolve(Cards);
 });
-
 
 module.exports = { gameNamespace }

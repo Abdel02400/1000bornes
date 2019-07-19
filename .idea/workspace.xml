@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="955e0dac-2e5a-4c3b-b008-0f0166b54813" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/.csscomb.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/.jscs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/.jshintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/.jshintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/.npmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/AUTHORS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/CONTRIBUTION.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/lib-cov/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/lib/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/promise-queue/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/.coveralls.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/.eslintrc.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/.remarkrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/RedisServer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node_modules/redis-server/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sockets/sockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/sockets/sockets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/game.html" afterDir="false" />
     </list>
@@ -45,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/game.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="441" column="50" lean-forward="true" selection-start-line="441" selection-start-column="50" selection-end-line="441" selection-end-column="50" />
+            <state relative-caret-position="259">
+              <caret line="490" selection-start-line="490" selection-end-line="490" />
               <folding>
                 <element signature="n#style#0;n#html#0;n#!!top" />
                 <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -63,20 +34,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+            <state relative-caret-position="136">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="38" />
+            <state relative-caret-position="1921">
+              <caret line="113" selection-start-line="113" selection-end-line="113" />
               <folding>
                 <element signature="n#!!block;n#checkVictory#0" />
-                <element signature="e#5533#10069#0" />
               </folding>
             </state>
           </provider>
@@ -123,6 +93,10 @@
       <find>modal</find>
       <find>console</find>
       <find>inn</find>
+      <find>minT</find>
+      <find>justOne</find>
+      <find>emit</find>
+      <find>my</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,10 +110,10 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/models/carte.js" />
         <option value="$PROJECT_DIR$/middleware/carte.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/config/config.js" />
-        <option value="$PROJECT_DIR$/static/game.html" />
         <option value="$PROJECT_DIR$/sockets/sockets.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/static/game.html" />
       </list>
     </option>
   </component>
@@ -238,17 +212,27 @@
       <workItem from="1563442102630" duration="874000" />
       <workItem from="1563444315983" duration="2360000" />
       <workItem from="1563455563094" duration="1791000" />
+      <workItem from="1563457401775" duration="654000" />
+      <workItem from="1563461583704" duration="1785000" />
+      <workItem from="1563463388349" duration="416000" />
+      <workItem from="1563480339231" duration="225000" />
+      <workItem from="1563486345102" duration="1789000" />
+      <workItem from="1563488206273" duration="1688000" />
+      <workItem from="1563490166101" duration="1790000" />
+      <workItem from="1563491982569" duration="1033000" />
+      <workItem from="1563524846156" duration="1783000" />
+      <workItem from="1563526673661" duration="1273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61299000" />
+    <option name="totallyTimeSpent" value="73735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.41823056" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21648793" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -319,10 +303,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="490" selection-start-line="490" selection-end-line="490" />
+          <folding>
+            <element signature="n#style#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+        <state relative-caret-position="136">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1921">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+          <folding>
+            <element signature="n#!!block;n#checkVictory#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -344,30 +351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="441" column="50" lean-forward="true" selection-start-line="441" selection-start-column="50" selection-end-line="441" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="71" column="38" lean-forward="true" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="38" />
-          <folding>
-            <element signature="n#!!block;n#checkVictory#0" />
-            <element signature="e#5533#10069#0" />
-          </folding>
         </state>
       </provider>
     </entry>
