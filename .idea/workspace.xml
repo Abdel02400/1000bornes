@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/game.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="591" column="8" selection-start-line="591" selection-start-column="8" selection-end-line="591" selection-end-column="8" />
+            <state relative-caret-position="217">
+              <caret line="445" lean-forward="true" selection-start-line="445" selection-end-line="445" />
               <folding>
                 <element signature="n#style#0;n#html#0;n#!!top" />
                 <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -42,25 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="178" selection-start-line="178" selection-end-line="178" />
-              <folding>
-                <element signature="e#528#745#0" />
-                <element signature="e#773#982#0" />
-                <element signature="e#1008#1221#0" />
-                <element signature="e#1249#1636#0" />
-                <element signature="e#1691#1960#0" />
-                <element signature="e#2013#2258#0" />
-                <element signature="e#2305#3033#0" />
-                <element signature="e#3081#4265#0" />
-                <element signature="e#4312#5246#0" />
-                <element signature="e#5295#6636#0" />
-                <element signature="n#!!block;n#playDistance#0" />
-                <element signature="n#!!block;n#playParade#0" />
-                <element signature="n#!!block;n#playBotte#0" />
-                <element signature="n#!!block;n#playAttaque#0" />
-                <element signature="n#!!block;n#checkVictory#0" />
-              </folding>
+            <state relative-caret-position="336">
+              <caret line="111" column="27" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -110,6 +93,9 @@
       <find>emit</find>
       <find>my</find>
       <find>console</find>
+      <find>playJ</find>
+      <find>playJoueur</find>
+      <find>updat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,6 +128,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -149,11 +136,15 @@
               <item name="1000bornes" type="b2602c69:ProjectViewProjectNode" />
               <item name="1000bornes" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="1000bornes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="1000bornes" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -237,18 +228,19 @@
       <workItem from="1563526673661" duration="1273000" />
       <workItem from="1563528483081" duration="1794000" />
       <workItem from="1563530302026" duration="1790000" />
-      <workItem from="1563532129646" duration="231000" />
+      <workItem from="1563532129646" duration="632000" />
+      <workItem from="1563541287354" duration="298000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77550000" />
+    <option name="totallyTimeSpent" value="78249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22453083" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2272118" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -349,32 +341,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sockets/sockets.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="178" selection-start-line="178" selection-end-line="178" />
-          <folding>
-            <element signature="e#528#745#0" />
-            <element signature="e#773#982#0" />
-            <element signature="e#1008#1221#0" />
-            <element signature="e#1249#1636#0" />
-            <element signature="e#1691#1960#0" />
-            <element signature="e#2013#2258#0" />
-            <element signature="e#2305#3033#0" />
-            <element signature="e#3081#4265#0" />
-            <element signature="e#4312#5246#0" />
-            <element signature="e#5295#6636#0" />
-            <element signature="n#!!block;n#playDistance#0" />
-            <element signature="n#!!block;n#playParade#0" />
-            <element signature="n#!!block;n#playBotte#0" />
-            <element signature="n#!!block;n#playAttaque#0" />
-            <element signature="n#!!block;n#checkVictory#0" />
-          </folding>
+        <state relative-caret-position="336">
+          <caret line="111" column="27" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/game.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="591" column="8" selection-start-line="591" selection-start-column="8" selection-end-line="591" selection-end-column="8" />
+        <state relative-caret-position="217">
+          <caret line="445" lean-forward="true" selection-start-line="445" selection-end-line="445" />
           <folding>
             <element signature="n#style#0;n#html#0;n#!!top" />
             <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
